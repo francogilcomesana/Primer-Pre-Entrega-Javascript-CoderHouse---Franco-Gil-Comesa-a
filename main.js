@@ -1,7 +1,7 @@
-// Pedir al usuario su nombre
+// Pedir nombre de usuario
 let nombreUsuario = prompt("Ingrese su nombre:");
-
 alert(`Bienvenido/a, ${nombreUsuario}! a Simplifier Exchange.`);
+
 // Arreglo de objetos con información de las divisas
 const infoDivisas = [
   { divisa: "USD", pais: "Estados Unidos", precio: 1 },
@@ -19,10 +19,43 @@ for (const divisa of infoDivisas) {
 // Bucle while para hacer más de una conversión
 let convertirDeNuevo = true;
 while (convertirDeNuevo) {
+
   // Pedir al usuario los valores de conversión
-  const monto = parseFloat(prompt("Ingrese el monto a convertir:"));
-  const monedaOrigen = prompt("Ingrese la moneda de origen (por ejemplo, ARS):").toUpperCase();
-  const monedaDestino = prompt("Ingrese la moneda de destino (por ejemplo, USD):").toUpperCase();
+  let montoValido = false;
+  let monto;
+  while (!montoValido) {
+    const montoIngresado = prompt("Ingrese el monto a convertir:");
+    monto = parseFloat(montoIngresado);
+    if (!isNaN(monto)) {
+      montoValido = true;
+    } else {
+      alert("El monto ingresado no es válido. Por favor, ingrese un número válido.");
+    }
+  }
+
+  let monedaOrigenValida = false;
+  let monedaOrigen;
+  while (!monedaOrigenValida) {
+    monedaOrigen = prompt("Ingrese la moneda de origen (por ejemplo, ARS):").toUpperCase();
+    const divisaEncontrada = infoDivisas.find(d => d.divisa === monedaOrigen);
+    if (divisaEncontrada) {
+      monedaOrigenValida = true;
+    } else {
+      alert("La moneda de origen ingresada no es válida. Por favor, ingrese una moneda válida.");
+    }
+  }
+
+  let monedaDestinoValida = false;
+  let monedaDestino;
+  while (!monedaDestinoValida) {
+    monedaDestino = prompt("Ingrese la moneda de destino (por ejemplo, USD):").toUpperCase();
+    const divisaEncontrada = infoDivisas.find(d => d.divisa === monedaDestino);
+    if (divisaEncontrada) {
+      monedaDestinoValida = true;
+    } else {
+      alert("La moneda de destino ingresada no es válida. Por favor, ingrese una moneda válida.");
+    }
+  }
 
   // Obtener la tasa de conversión
   const tasaOrigen = infoDivisas.find(d => d.divisa === monedaOrigen).precio;
@@ -45,14 +78,10 @@ while (convertirDeNuevo) {
     }
   }
 
-  // Obtener el nombre completo del país correspondiente a la moneda de origen y destino
-  const paisOrigen = infoDivisas
-
   // Preguntar al usuario si quiere hacer otra conversión
   const deNuevo = prompt("¿Desea realizar otra conversión? (Sí o No)").toLowerCase();
   convertirDeNuevo = (deNuevo === "sí" || deNuevo === "si");
 }
 
-// Mnesaje de despedida
-alert("Gracias por utilizar Simplifier Exchange. ¡Hasta la próxima!") ;
-
+// Mensaje de despedida
+alert("Gracias por utilizar Simplifier Exchange. ¡Hasta la próxima!");
