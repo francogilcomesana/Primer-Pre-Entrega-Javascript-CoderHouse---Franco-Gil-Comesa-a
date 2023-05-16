@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primer Pre entrega</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>Simplifier Exchange</title>
 </head>
 
 <body>
-    <script src="main.js"></script>
-    <h1>Curso JavaScript Coder House</h1>
     
-    <div>
-        <h2>SIMPLIFIER EXCHANGE - Segunda Pre Entrega</h2>
+    <h1>Simplifier Exchange</h1>
+    <div class="conversor">
+        <div>
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" placeholder="Ingrese el monto">
+        </div>
+        <div>
+            <label for="monedaOrigen">Moneda de Origen:</label>
+            <select id="monedaOrigen">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="ARS">ARS</option>
+                <option value="BRL">BRL</option>
+            </select>
+        </div>
+        <div>
+            <label for="monedaDestino">Moneda de Destino:</label>
+            <select id="monedaDestino">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="ARS">ARS</option>
+                <option value="BRL">BRL</option>
+            </select>
+        </div>
+        <button id="btnConvertir">Convertir</button>
+        <div id="resultado"></div>
     </div>
-    <p>Franco Gil Comesaña</p>
+    <script src="main.js"></script>
 </body>
 
 </html>
